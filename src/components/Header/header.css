@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster|Oswald');
+
+a{
+    text-decoration: none;
+    color: whitesmoke;
+    font-family: Oswald;
+}
+
+#logo{
+    font-family: Lobster;
+    /* color: rgb(255, 217, 47); */
+    color: rgb(255, 212, 70);
+    text-shadow: 1.5px 1.5px .75px rgb(255, 107, 87);
+    font-size: 40px;
+}
+.header-container {
+    height: 70px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background-color: rgb(54, 54, 54);
+    border-bottom: 5px solid rgb(255, 107, 87);
+}
+
+.header-container > div {
+    max-width: 1200px;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-container ul{
+    display: flex;
+    list-style: none;
+}
+
+.header-container li{
+    margin: 0 10px;
+    font-size: 21px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.header-container button{
+    height: 20px;
+    font-family: Oswald;
+    font-size: 12px;
+    border-style: none;
+    border-radius: 5px;
+}
+
+#red{
+    color:rgb(253, 103, 103);
+}
+
+#profile{
+    font-size: 20px;
+    text-decoration: underline;
+}
