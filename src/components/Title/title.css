@@ -47,3 +47,10 @@
 .title-container button:hover {
     box-shadow: 1px 1px 15px rgba(255, 255, 255, 0.4); 
 }
+
+/* #slogan{
+    font-size: 30px;
+    font-family: Lobster;
+    color: rgb(255, 212, 70);
+    text-shadow: 3px .5px black;
+} */
