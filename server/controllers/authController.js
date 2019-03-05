@@ -44,7 +44,6 @@ module.exports = {
 
     },
     logout: (req,res,next)=>{
-        const {session} = req;
         req.session.destroy();
         res.status(200).json(req.session)
     },

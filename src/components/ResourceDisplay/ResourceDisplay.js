@@ -1,14 +1,14 @@
 import React, {Component} from "react";
 import axios from "axios";
+import {getChart, getUser} from "../../redux/reducer";
+import {connect} from "react-redux";
 
 
-export default class ResourceDisplay extends Component{
+class ResourceDisplay extends Component{
     constructor(props){
         super(props);
         this.state = {
             doctors:[],
-            state: "az",
-            city: "phoenix",
             specialty: "psychiatrist",
             skip: 0,
         }
@@ -24,7 +24,8 @@ export default class ResourceDisplay extends Component{
 
     
     getDoctors(){
-        const {state,city,specialty,skip} = this.state;
+        const {state,city} = this.props.chart[0];
+        const {specialty,skip} = this.state;
         axios.get(`https://api.betterdoctor.com/2016-03-01/doctors?location=${state}-${city}&specialty_uid=${specialty}&skip=${skip}&limit=10&user_key=93386aa8c548a0e14484f8cd1f39f385`).then(response=>{
             console.log(response.data.data)
             this.setState({
@@ -85,9 +86,19 @@ export default class ResourceDisplay extends Component{
             
             
             <section>
-                <p>{mappedDoctors}</p>
+                {mappedDoctors}
             </section>
         </div>
         )
     }
 }
+
+
+const mapStateToProps = (reducerState) => {
+    return {
+        user: reducerState.user,
+        chart: reducerState.chart
+    }
+  }
+  
+export default connect(mapStateToProps, {getUser,getChart})(ResourceDisplay);

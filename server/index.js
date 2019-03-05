@@ -28,11 +28,13 @@ massive(process.env.CONNECTION_STRING).then((db)=>{
 
 
 app.get("/admin/user-info",chartController.getAllCharts)
+app.get("/admin/users",userController.getAllUsers)
+app.get("/admin/users/:id",userController.getUser)
 
-app.get("/charts",chartController.getChart)
+app.get("/charts/:id",chartController.getChart)
 app.post("/charts",chartController.createChart)
 app.put("/charts",chartController.editChart)
-app.delete("/charts",chartController.deleteChart)
+app.delete("/charts/:id",chartController.deleteChart)
 
 app.get("/auth",authController.login)
 app.get("/api/user-data",authController.getUserData)

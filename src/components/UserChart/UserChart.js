@@ -3,17 +3,32 @@ import axios from "axios";
 import {connect} from "react-redux";
 import {getUser} from "../../redux/reducer";
 import {getChart} from "../../redux/reducer";
+import ResourceDisplay from "../ResourceDisplay/ResourceDisplay";
 
 
 class UserChart extends Component{
     componentDidMount(){
+        const {user_id} = this.props.user;
+        axios.get(`/charts/${user_id}`).then(response=>{
+            console.log("chart", response.data)
+            this.props.getChart(response.data)
+        })
         console.log(this.props.user);
+        // console.log("chart", this.props.chart)
+    }
+
+    componentDidUpdate(){
+        console.log(this.state)
     }
     constructor(props) {
         super(props);
         this.state = {
-            valueOne: 'prefer not to say',
-            valueTwo: 'prefer not to say',
+            first:"",
+            last:"",
+            city: "",
+            state: "",
+            gender: 'prefer not to say',
+            orientation: 'prefer not to say',
             depression: false,
             anxiety: false,
             bipolar: false,
@@ -37,12 +52,11 @@ class UserChart extends Component{
     }
     
     handleChangeOne(event) {
-        this.setState({valueOne: event.target.value});
+        this.setState({gender: event.target.value});
     }
     handleChangeTwo(event) {
-        this.setState({valueTwo: event.target.value});
+        this.setState({orientation: event.target.value});
     }
-
     handleInputChange(event){
         const target = event.target;
         const name = target.name;
@@ -55,8 +69,8 @@ class UserChart extends Component{
 
     createChart(){
         const {user_id} = this.props.user;
-        const {valueOne,valueTwo,depression,anxiety,bipolar,schizophrenia,ptsd,q1,q2,q3,q4} = this.state;
-        const chart = {user_id,valueOne,valueTwo,depression,anxiety,bipolar,schizophrenia,ptsd,q1,q2,q3,q4}
+        const {first,last,city,state,gender,orientation,depression,anxiety,bipolar,schizophrenia,ptsd,q1,q2,q3,q4,q5,q6,q7,q8} = this.state;
+        const chart = {user_id,first,last,city,state,gender,orientation,depression,anxiety,bipolar,schizophrenia,ptsd,q1,q2,q3,q4,q5,q6,q7,q8}
         axios.post("/charts", chart).then(response=>{
             console.log(response.data);
             this.props.getChart(response.data)
@@ -64,13 +78,35 @@ class UserChart extends Component{
     }
 
     render(){
+        const {chart} = this.props;
         return(
+            <div> 
+            { chart[0] ? (
+                <div>
+                    <ResourceDisplay/>
+                </div>
+            )
+            :
+            (
             <div>
             <h1>USERCHART</h1>
             <form onSubmit={e=>e.preventDefault()}>
                 <label>
+                First Name:
+                    <input placeholder="First" onChange={e=>this.setState({first: e.target.value})}/>
+                </label>
+                <label>
+                Last Name:
+                    <input placeholder="Last" onChange={e=>this.setState({last: e.target.value})}/>
+                </label>
+                <label>
+                City and State:
+                    <input placeholder="City" onChange={e=>this.setState({city: e.target.value.split(" ").join("-").toLowerCase()})}/>
+                    <input placeholder="State" type="text" maxLength={2} onChange={e=>this.setState({state: e.target.value.toLowerCase()})}/>
+                </label>
+                <label>
                 Gender:
-                <select value={this.state.valueOne} onChange={this.handleChangeOne}>
+                <select value={this.state.gender} onChange={this.handleChangeOne}>
                     <option value="prefer not to say">Prefer not to say</option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
@@ -79,7 +115,7 @@ class UserChart extends Component{
                 </label>
                 <label>
                 Sexual Orientation:
-                <select value={this.state.valueTwo} onChange={this.handleChangeTwo}>
+                <select value={this.state.orientation} onChange={this.handleChangeTwo}>
                     <option value="prefer not to say">Prefer not to say</option>
                     <option value="straight">Straight</option>
                     <option value="gay">Gay</option>
@@ -199,6 +235,8 @@ class UserChart extends Component{
                     <button onClick={this.createChart}>Submit</button>
                 </label>
             </form>
+            </div>
+            )}
             </div>
         )
     }
