@@ -5,6 +5,7 @@
     width: 100vw;
     height:100vh;
     background-image: linear-gradient(rgba(60, 114, 145, 0.75), rgba(60, 151, 211, 0.5)),url(https://images.unsplash.com/photo-1521540124319-66c09f0d5999?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1583&q=80);
+    /* background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(151, 151, 151, 0.5)),url(https://images.unsplash.com/photo-1521540124319-66c09f0d5999?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1583&q=80); */
     background-position: top;
     background-size: cover;
     display: flex;
@@ -19,6 +20,7 @@
     font-family: Lobster;
     color: rgb(255, 212, 70);
     text-shadow: 3px 3px 2px rgb(255, 107, 87);
+    /* text-shadow: 2.5px 2.5px white; */
     margin: 0;
 }
 

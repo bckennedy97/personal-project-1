@@ -6,6 +6,8 @@ const authController = require("./controllers/authController");
 const userController = require("./controllers/userController");
 const chartController = require("./controllers/chartController");
 
+
+
 const app = express();
 
 require("dotenv").config();
@@ -25,8 +27,9 @@ massive(process.env.CONNECTION_STRING).then((db)=>{
 })
 
 
-app.get("/admin/user-info",userController.getAllUsers)
+app.get("/admin/user-info",chartController.getAllCharts)
 
+app.get("/charts",chartController.getChart)
 app.post("/charts",chartController.createChart)
 app.put("/charts",chartController.editChart)
 app.delete("/charts",chartController.deleteChart)

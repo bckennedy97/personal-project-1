@@ -43,6 +43,11 @@ module.exports = {
         .catch(err=>(console.log(err)))
 
     },
+    logout: (req,res,next)=>{
+        const {session} = req;
+        req.session.destroy();
+        res.status(200).json(req.session)
+    },
     getUserData(req,res){
         res.status(200).json(req.session.user);
     }

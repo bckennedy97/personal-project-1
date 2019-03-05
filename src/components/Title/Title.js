@@ -16,7 +16,6 @@ export default class App extends Component {
         <div>
           <h1>ouiCARE</h1>
           <h3>Providing Simple and Efficient Access to Healthcare Services and Support for Those In Need<br/>Say Yes to Your Health, Because We Care</h3>
-          <h3></h3>
           <button className = "box" onClick={this.login}>Get Started</button>
         </div>
       </div>

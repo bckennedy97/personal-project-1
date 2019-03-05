@@ -11,6 +11,7 @@ a{
     /* color: rgb(255, 217, 47); */
     color: rgb(255, 212, 70);
     text-shadow: 1.5px 1.5px .75px rgb(255, 107, 87);
+    /* text-shadow: 1px 1px white; */
     font-size: 40px;
 }
 .header-container {
@@ -19,7 +20,8 @@ a{
     position: fixed;
     top: 0;
     background-color: rgb(54, 54, 54);
-    border-bottom: 5px solid rgb(255, 107, 87);
+    /* border-bottom: 5px solid rgb(255, 107, 87); */
+    border-bottom: 5px solid white;
 }
 
 .header-container > div {

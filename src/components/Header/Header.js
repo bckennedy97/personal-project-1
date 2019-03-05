@@ -39,8 +39,8 @@ class Header extends Component{
                 :(
                     <nav>
                         <ul>
-                            <li><NavLink classname="link" to="/home">Home</NavLink></li>
-                            <li><NavLink classname="link" to="/about">About</NavLink></li>
+                            <li><NavLink className="link" to="/home">Home</NavLink></li>
+                            <li><NavLink className="link" to="/about">About</NavLink></li>
                             <li><NavLink to="/sos"><span id="red">EMERGENCY</span></NavLink></li>
                             <li><button onClick={this.login}>Login</button></li>
                         </ul>
