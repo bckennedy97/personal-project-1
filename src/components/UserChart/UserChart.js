@@ -2,8 +2,8 @@ import React, {Component} from "react";
 import axios from "axios";
 import {connect} from "react-redux";
 import {getUser} from "../../redux/reducer";
-import {getChart} from "../../redux/reducer";
 import ResourceDisplay from "../ResourceDisplay/ResourceDisplay";
+import "./userChart.css"
 
 
 class UserChart extends Component{
@@ -16,10 +16,7 @@ class UserChart extends Component{
         console.log(this.props.user);
         // console.log("chart", this.props.chart)
     }
-
-    componentDidUpdate(){
-        console.log(this.state)
-    }
+    
     constructor(props) {
         super(props);
         this.state = {
@@ -77,10 +74,24 @@ class UserChart extends Component{
         })
     }
 
+    editChart(){
+        const {user_id} = this.props.user;
+        const {first,last,city,state,gender,orientation,depression,anxiety,bipolar,schizophrenia,ptsd,q1,q2,q3,q4,q5,q6,q7,q8} = this.state;
+        const chart = {first,last,city,state,gender,orientation,depression,anxiety,bipolar,schizophrenia,ptsd,q1,q2,q3,q4,q5,q6,q7,q8}
+        axios.put(`/charts/${user_id}`, chart).then(response=>{
+            console.log(response.data);
+            this.props.getChart(response.data)
+        })
+    }
+
+    deleteChart(){
+
+    }
+
     render(){
         const {chart} = this.props;
         return(
-            <div> 
+            <div className="chart"> 
             { chart[0] ? (
                 <div>
                     <ResourceDisplay/>
@@ -89,7 +100,6 @@ class UserChart extends Component{
             :
             (
             <div>
-            <h1>USERCHART</h1>
             <form onSubmit={e=>e.preventDefault()}>
                 <label>
                 First Name:
@@ -251,4 +261,4 @@ const mapStateToProps = (reducerState) => {
     }
 }
 
-export default connect(mapStateToProps, {getUser,getChart})(UserChart)
+export default connect(mapStateToProps, {getUser})(UserChart)

@@ -1,8 +1,8 @@
 import React, {Component} from "react";
-import {NavLink} from "react-router-dom";
+import {NavLink,withRouter} from "react-router-dom";
 import axios from "axios";
 import {connect} from "react-redux";
-import {getUser} from "../../redux/reducer";
+import {getUser,logout} from "../../redux/reducer";
 import "./header.css";
 
 class Header extends Component{
@@ -17,6 +17,11 @@ class Header extends Component{
   
         window.location = `https://${process.env.REACT_APP_AUTH_DOMAIN}/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&scope=openid%20email%20profile&redirect_uri=${redirectUri}&response_type=code`
     }
+
+    logout = () => {
+        this.props.logout()
+        .then(this.props.history.push("/"))
+    }
     
     render(){
         const {user} = this.props;
@@ -30,9 +35,11 @@ class Header extends Component{
                     <nav className="Nav">
                         <ul>
                             <li><NavLink to="/home">Home</NavLink></li>
-                            <li><NavLink to="/about">About</NavLink></li>
-                            <li><NavLink to="/sos"><span id="red">EMERGENCY</span></NavLink></li>
+                            {/* <li><NavLink to="/doctors">Doctors</NavLink></li> */}
+                            <li><NavLink to="/donate">Donate</NavLink></li>
+                            {/* <li><NavLink to="/sos"><span id="red">EMERGENCY</span></NavLink></li> */}
                             <li><NavLink id="profile" to="/acc">{user.profile_name}</NavLink></li>
+                            <li><button onClick={this.logout}>Logout</button></li>
                         </ul>
                         
                     </nav>)
@@ -40,8 +47,9 @@ class Header extends Component{
                     <nav>
                         <ul>
                             <li><NavLink className="link" to="/home">Home</NavLink></li>
-                            <li><NavLink className="link" to="/about">About</NavLink></li>
-                            <li><NavLink to="/sos"><span id="red">EMERGENCY</span></NavLink></li>
+                            {/* <li><NavLink className="link" to="/doctors">Doctors</NavLink></li> */}
+                            <li><NavLink to="/donate">Donate</NavLink></li>
+                            {/* <li><NavLink to="/sos"><span id="red">EMERGENCY</span></NavLink></li> */}
                             <li><button onClick={this.login}>Login</button></li>
                         </ul>
                     </nav>)
@@ -55,8 +63,8 @@ class Header extends Component{
 
 const mapStateToProps = (reducerState) => {
     return {
-        user: reducerState.user
+        user: reducerState.user,
     }
   }
   
-export default connect(mapStateToProps, {getUser})(Header);
+export default withRouter(connect(mapStateToProps, {getUser,logout})(Header));

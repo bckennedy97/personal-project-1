@@ -4,6 +4,9 @@ import Home from "./components/Home/Home";
 import Title from "./components/Title/Title";
 import About from "./components/About/About"
 import Sos from "./components/Sos/Sos";
+import Account from "./components/Account/Account";
+import Stripe from "./components/Stripe/Stripe";
+import UserChart from "./components/UserChart/UserChart";
 
 export default (
     <Switch>
@@ -17,7 +20,7 @@ export default (
                 <Home/>
             </div>
         }}/>
-        <Route path="/about" render={()=>{
+        <Route path="/doctors" render={()=>{
             return <div>
                 <About/>
             </div>
@@ -29,7 +32,17 @@ export default (
         }}/>
         <Route path="/acc" render={()=>{
             return <div>
-                account info
+                <Account/>
+            </div>
+        }}/>
+        <Route path="/donate" render={()=>{
+            return <div>
+                <Stripe/>
+            </div>
+        }}/>
+        <Route path="/user_chart" render={()=>{
+            return <div>
+                <UserChart/>
             </div>
         }}/>
     </Switch>

@@ -21,7 +21,7 @@ module.exports = {
         }
         function storeUserInfoInDB(userInfoResponse){
             const userData = userInfoResponse.data;
-            console.log(userData);
+            // console.log(userData);
             db.get_user(userData.sub).then((user)=>{
                 if(user.length){
                     req.session.user = user[0];
@@ -45,7 +45,8 @@ module.exports = {
     },
     logout: (req,res,next)=>{
         req.session.destroy();
-        res.status(200).json(req.session)
+        res.status(200).json(req.session);
+    
     },
     getUserData(req,res){
         res.status(200).json(req.session.user);

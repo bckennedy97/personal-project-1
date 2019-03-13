@@ -11,6 +11,13 @@ module.exports = {
         db.get_user().then(user =>{
             res.status(200).json(user)
         }).catch(err=>console.log(err));
+    },
+    updateUser:(req,res)=>{
+        const db=req.app.get("db");
+        const {id} = req.params;
+        const {first,last,city,state,gender} = req.body;
+        db.update_user([first,last,city,state,gender,id]).then(user=>{
+            res.status(200).json(user)
+        }).catch(err=>console.log(err.detail))
     }
-    
 }

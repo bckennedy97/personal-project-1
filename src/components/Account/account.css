@@ -1,0 +1,30 @@
+.account-container{
+    margin-top: 70px;
+    display: flex;
+
+}
+
+.account-info{    
+    width: 260px;
+    height: 100%;
+    margin-right: 200px;
+    /* margin-left: 20px; */
+    /* position: fixed; */
+}
+
+.doctors2 {
+    margin: 40px 50px 20px 0px;
+    z-index: 0;
+}
+
+.list-container{
+    position: fixed;
+    height: 400px;
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-family: Oswald;
+}
+
+

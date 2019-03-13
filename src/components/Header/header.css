@@ -8,13 +8,14 @@ a{
 
 #logo{
     font-family: Lobster;
-    /* color: rgb(255, 217, 47); */
     color: rgb(255, 212, 70);
-    text-shadow: 1.5px 1.5px .75px rgb(255, 107, 87);
-    /* text-shadow: 1px 1px white; */
+    /* text-shadow: 1.5px 1.5px white; */
+    /* text-shadow: 1.5px 1.5px .75px rgb(255, 107, 87); */
+    /* color: white; */
     font-size: 40px;
 }
 .header-container {
+    z-index: 1;
     height: 70px;
     width: 100%;
     position: fixed;

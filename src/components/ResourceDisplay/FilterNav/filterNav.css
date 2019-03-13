@@ -1,0 +1,21 @@
+.nav-header {
+    /* background: rgb(58, 58, 58); */
+    height: 40px;
+    margin: 0 10px;
+    padding: 10px 10px 10px 0px;
+    font-size: 20px;
+    font-family: Oswald;
+    border-bottom: 2px solid white;
+    color: rgb(58, 58, 58);
+}
+
+.form-container{
+    /* position: fixed; */
+    height: 200px;
+    width: 250px;
+    padding: 0 5px 0 5px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-around; */
+    font-family: Oswald;
+}

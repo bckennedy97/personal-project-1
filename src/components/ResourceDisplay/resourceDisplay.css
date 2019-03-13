@@ -1,0 +1,24 @@
+.resource-container{
+    display: flex;
+}
+
+
+.card-container {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    padding: 20px 40px;
+    margin-left: 253px;
+    /* margin-right: 5px; */
+}
+
+.nav-container{
+    flex: .5;
+    height: 100vh;
+    background: lightgray;
+    position: fixed;
+    width: 250px;
+    border-right: 5px solid rgb(255, 228, 138);
+    /* border-top: 2.5px solid rgb(255, 228, 138); */
+}
